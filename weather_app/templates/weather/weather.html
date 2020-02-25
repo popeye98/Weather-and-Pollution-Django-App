@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div clas="row mt-3 my-3">
+  <div class="col">
+      <br>
+      {% if city_pollution|length > 0 %}
+    <h2>Add City Here</h2>
+    <form class="form-inline" action="/addCity" method="post">
+      {% csrf_token %}
+<input type="text" id="content" name="content" class="form-control mb-2 my-3 mr-sm-2" id="inlineFormInput" placeholder="Type Here">
+
+<button type="submit" class="btn btn-primary mb-2 my-3 mx-3">Add City</button>
+    </form>
+    {%endif%}
+</div>
+
+</div>
+
+
+  <div class="container">
+    <div class="text-center">
+        <img src="http://openweathermap.org/img/w/{{icon}}.png" width="120" height="120" class="rounded" alt="Image">
+      </div>
+  </div>
+
+  <ul class="list-group my-3">
+      <li class="list-group-item active">{{city}}</li>
+      <li class="list-group-item">Country <div class="float-right">{{country}} </div></li>
+    <li class="list-group-item">Temperatue <div class="float-right">{{temperature}} K </div></li>
+    <li class="list-group-item">Description <div class="float-right">{{description}} </div></li>
+    <li class="list-group-item">Minimum Temperature <div class="float-right">{{min_temp}} K </div></li>
+    <li class="list-group-item">Maximum Temperature <div class="float-right">{{max_temp}} K </div></li>
+    <li class="list-group-item">Pressure <div class="float-right">{{pressure}} </div></li>
+    <li class="list-group-item">Humidity <div class="float-right">{{humidity}} </div></li>
+    
+  </ul>
+  <div class="container my-4 mx-4">
+    <div class="my-4 mx-4 m-4">
+        <div class="text-center">
+            <div class="btn-group m-4">
+                <a href="/weather" class="btn btn-outline-success mx-3">Add another City</a>
+                <a href="/pollution" class="btn btn-outline-success mx-2">Pollution App</a>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  {%endblock content%}

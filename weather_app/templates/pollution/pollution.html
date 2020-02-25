@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div clas="row mt-3 my-3">
+  <div class="col">
+      <br>
+      {% if city_pollution|length > 0 %}
+    <h2>Add City Here</h2>
+    <form class="form-inline" action="/addCity" method="post">
+      {% csrf_token %}
+      
+        
+      
+<input type="text" id="content" name="content" class="form-control mb-2 my-3 mr-sm-2" id="inlineFormInput" placeholder="Type Here">
+
+<button type="submit" class="btn btn-primary mb-2 my-3 mx-3">Add City</button>
+    </form>
+    {%endif%}
+</div>
+
+</div>
+
+
+
+
+  <ul class="list-group my-3">
+      <li class="list-group-item active">{{city}}</li>
+      <li class="list-group-item">Aqi <div class="float-right">{{aqi}} </div></li>
+      <li class="list-group-item">Time Measured <div class="float-right">{{time}} </div></li>
+      <li class="list-group-item">PM 2.5 level <div class="float-right">{{pm25}} </div></li>
+    
+  </ul>
+
+  
+
+
+  <div class="container my-4 mx-4">
+    <div class="my-4 mx-4 m-4">
+        <div class="text-center">
+            <div class="btn-group m-4">
+              <a href="/pollution" class="btn btn-outline-success mx-2">Add another City</a>
+                <a href="/weather" class="btn btn-outline-success mx-3">Weather App</a>
+                </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+  {%endblock content%}

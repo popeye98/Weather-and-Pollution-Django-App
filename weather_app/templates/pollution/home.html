@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% block activepollution %}
+ 
+   
+ active
+{% endblock activepollution %}
+{% block content %}
+<div clas="row mt-3 my-3">
+  <div class="col">
+      <br>
+    <h2>Add City Here</h2>
+    <form class="form-inline" action="addCity/" method="post">
+      {% csrf_token %}
+<input type="text" id="content" name="content" class="form-control mb-2 my-3 mr-sm-2" id="inlineFormInput" placeholder="Type Here">
+
+<button type="submit" class="btn btn-primary mb-2 my-3 mx-3">Add City</button>
+    </form>
+    <form class='my-4' action="currentCity/" method='POST'>
+      {% csrf_token %}
+      <button type="submit" class="btn btn-info">Current City</button>
+    </form>
+</div>
+
+</div>
+
+
+<li class="list-group-item active my-2">Your recent search</li>
+{% for city  in all_city  %}
+<ul class="list-group">
+    <div class="list-group-item">{{city}} <div class="float-right btn-group">
+        <form action="fromList/{{city.id}}" action="post">
+        <button type="submit" class="btn btn-outline-success mx-2">Show</button></form>
+      
+        <form action="delete/{{city.id}}" action="post">
+        <button type="submit" class="btn btn-danger mx-2">Delete</button></form>
+      </div>
+      </div> </ul>
+{% endfor %}
+
+{%endblock content%}
